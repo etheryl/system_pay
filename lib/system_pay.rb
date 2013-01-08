@@ -35,9 +35,15 @@ class SystemPay
   @@certificat = '1122334455667788'
   cattr_accessor :certificat  
   
+  @@vads_redirect_success_timeout = '0'
+  cattr_accessor :vads_redirect_success_timeout
+
+  @@vads_redirect_error_timeout = '0'
+  cattr_accessor :vads_redirect_error_timeout
+
   attr_accessor :vads_amount, :vads_available_languages, :vads_capture_delay, :vads_contracts, :vads_currency, :vads_cust_address, :vads_cust_cell_phone, 
   :vads_cust_email, :vads_cust_id, :vads_cust_name, :vads_redirect_error_message, :vads_redirect_success_message, :vads_trans_date, :vads_trans_id, :vads_url_cancel, :vads_url_error, 
-  :vads_url_referral, :vads_url_refused, :vads_url_success, :vads_redirect_success_timeout
+  :vads_url_referral, :vads_url_refused, :vads_url_success
 
   # Public: Creation of new instance.
   #         
@@ -86,9 +92,8 @@ class SystemPay
     sign(vads_params) == params['signature']
   end
  
-  
-  private
 
+private
   def self.sign(values)
     Digest::SHA1.hexdigest((values+[certificat]).join("+"))
   end   
