@@ -26,7 +26,7 @@ class SystemPay
   @@vads_site_id = '123456' # change this value
   cattr_accessor :vads_site_id  
   
-  @@vads_validation_mode = ''
+  @@vads_validation_mode = '0' # automatic
   cattr_accessor :vads_validation_mode  
   
   @@vads_version = 'V2'
